@@ -115,13 +115,14 @@ const mod = {
 
 	_ValueAllVideoIDs: [],
 	_ValuePreviousVideoIDs: [],
+	_ValueCycledVideoIDs: [],
 	_ValueNextVideoIDs: [],
 
 	// DATA
 
 	DataNewVideoID () {
 		return uRandomElement(mod._ValueAllVideoIDs.filter(function (e) {
-			return !mod._ValuePreviousVideoIDs.includes(e);
+			return !mod._ValuePreviousVideoIDs.slice(mod._ValueCycledVideoIDs.length).includes(e);
 		}));
 	},
 
@@ -135,8 +136,8 @@ const mod = {
 		let item = mod.DataNewVideoID();
 
 		if (!item) {
-			mod._ValueNextVideoIDs = uShuffle(mod._ValuePreviousVideoIDs);
-			item = mod._ValueNextVideoIDs.pop();
+			mod._ValueCycledVideoIDs.push(...mod._ValuePreviousVideoIDs.slice(mod._ValueCycledVideoIDs.length));
+			item = mod.DataNewVideoID();
 		}
 
 		mod._ValuePreviousVideoIDs.push(item);
