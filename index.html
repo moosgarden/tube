@@ -152,7 +152,6 @@ const mod = {
 
 	_CommandLoadVideo (videoId) {
 		document.querySelector('.STRRandomButtonsPrevious').disabled = mod._ValuePreviousVideoIDs.length === 1;
-		document.querySelector('.STRRandomButtonsNext').disabled = !mod.DataNewVideoID();
 		
 		mod._ValuePlayer.loadVideoById({
 			videoId,
