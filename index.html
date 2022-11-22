@@ -148,8 +148,6 @@ const mod = {
 		mod._ValueNextVideoIDs.push(mod._ValuePreviousVideoIDs.pop());
 
 		mod._CommandLoadVideo(mod._ValuePreviousVideoIDs.slice().pop());
-
-		document.getElementById('videoInfo').innerHTML = "loading previous video...";
 	},
 
 	_CommandLoadVideo (videoId) {
